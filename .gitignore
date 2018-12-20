@@ -1,2 +1,35 @@
-*.class
 *.log
+*.class
+.DS_Store
+
+# SBT specific
+.cache/
+.history/
+.lib/
+dist/*
+target/
+lib_managed/
+src_managed/
+project/boot/
+project/plugins/project/
+sbt/sbt-launch*.jar
+metastore_db
+
+# Eclipse specific
+.classpath
+.project
+.settings/
+
+# Scala-IDE specific
+.cache-main
+.cache-tests
+.scala_dependencies
+.worksheet
+.idea
+.idea_modules
+
+# IntelliJ IDEA specific
+.idea
+*.iml
+
+checkpoint
