@@ -1,4 +1,5 @@
 organization := "com.mav.now"
+
 name := "sparkml-extensions"
 
 sparkVersion := "2.4.0"
