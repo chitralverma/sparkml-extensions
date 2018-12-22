@@ -1,0 +1,24 @@
+language: scala
+dist: precise
+cache:
+  directories:
+    - $HOME/.ivy2
+    - $HOME/spark
+    - $HOME/.cache/pip
+    - $HOME/.pip-cache
+    - $HOME/.sbt/launchers
+jdk:
+  - oraclejdk8
+scala:
+  - 2.10.4
+sudo: false
+before_install:
+  - export PATH=$HOME/.local/bin:$PATH
+script:
+  - ./sbt/sbt scalastyle
+  - ./sbt/sbt clean coverage test coverageReport
+  - bash <(curl -s https://codecov.io/bash) -cF scala
+notifications:
+  email:
+    recipients:
+      - chitralverma@gmail.com
