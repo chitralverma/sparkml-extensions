@@ -15,9 +15,10 @@
  * limitations under the License.
  */
 
-package com.mav.now.sparkml.extensions.evaluation
+package com.chitralv.sparkml.extensions.evaluation
 
 import breeze.linalg
+import com.chitralv.sparkml.extensions.utils.Utils.digitize
 import org.apache.spark.mllib.evaluation.BinaryClassificationMetrics
 import org.apache.spark.rdd.RDD
 
@@ -46,9 +47,7 @@ class BinaryClassificationMetricsWithExtensions(scoreAndLabels: RDD[(Double, Dou
 
     val bins = linalg.linspace(0.0, 1.0, nbins + 1).toArray
     val a = labelsAndPredictions.map {
-      case (l: Double, p: Double) =>
-        import com.mav.now.sparkml.extensions.utils.Utils.digitize
-        (digitize(p, bins), (l, p))
+      case (l: Double, p: Double) => (digitize(p, bins), (l, p))
     }
 
     a.map(x => (x._1, (x._2, 1L)))

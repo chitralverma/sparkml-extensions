@@ -15,18 +15,11 @@
  * limitations under the License.
  */
 
-package com.mav.now.sparkml.extensions.utils
+package com.chitralv.sparkml.extensions
 
-import com.mav.now.sparkml.extensions.TestBase
+import com.holdenkarau.spark.testing.SharedSparkContext
+import org.scalatest.{Matchers, WordSpec}
 
-class UtilsSpec extends TestBase {
-  import Utils._
-
-  "Digitize values correctly" in {
-    digitize(Array(0.2, 6.4, 3.0, 1.6), Array(0.0, 1.0, 2.5, 4.0, 10.0))
-      .shouldEqual(Array(1.0, 4.0, 3.0, 2.0))
-
-    digitize(Array(1.2, 10.0, 12.4, 15.5, 20.0), Array(0.0, 5.0, 10.0, 15.0, 20.0))
-      .shouldEqual(Array(1.0, 3.0, 3.0, 4.0, 4.0))
-  }
+trait TestBase extends WordSpec with SharedSparkContext with Matchers {
+  override implicit def reuseContextIfPossible: Boolean = true
 }

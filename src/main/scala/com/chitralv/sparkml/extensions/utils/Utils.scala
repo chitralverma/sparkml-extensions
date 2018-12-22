@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-package com.mav.now.sparkml.extensions.utils
+package com.chitralv.sparkml.extensions.utils
 
 object Utils {
 
