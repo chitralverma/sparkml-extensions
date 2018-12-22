@@ -15,9 +15,9 @@ sudo: false
 before_install:
   - export PATH=$HOME/.local/bin:$PATH
 script:
-  - ./sbt/sbt scalastyle
-  - ./sbt/sbt clean coverage test coverageReport
-  - bash <(curl -s https://codecov.io/bash) -cF scala
+  - sbt scalastyle
+  - sbt clean coverage test coverageReport
+  - bash <(curl -s https://codecov.io/bash)
 notifications:
   email:
     recipients:
