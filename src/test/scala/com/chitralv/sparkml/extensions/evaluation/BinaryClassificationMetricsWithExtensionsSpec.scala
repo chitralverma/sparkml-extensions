@@ -19,6 +19,10 @@ package com.chitralv.sparkml.extensions.evaluation
 import com.chitralv.sparkml.extensions.TestBase
 
 class BinaryClassificationMetricsWithExtensionsSpec extends TestBase {
+  import scala.math.BigDecimal.RoundingMode
+
+  private def setScale(d: Double): BigDecimal =
+    BigDecimal(d).setScale(4, RoundingMode.HALF_DOWN)
 
   "Compute correct values for calibration curve" in {
     val scoreAndLabels = Seq(
@@ -45,14 +49,17 @@ class BinaryClassificationMetricsWithExtensionsSpec extends TestBase {
     )
 
     val rdd = sc.parallelize(scoreAndLabels)
-    val result = new BinaryClassificationMetricsWithExtensions(rdd, 10).calibration().collect()
+    val result = new BinaryClassificationMetricsWithExtensions(rdd, 10)
+      .calibration()
+      .collect()
+      .map(d => (setScale(d._1), setScale(d._2)))
 
     val expected = Array(
       (0.2222222222222222, 0.1887132411111111),
       (1.0, 0.69560362),
       (0.0, 0.21224511000000001),
       (0.875, 0.7368591975000001)
-    )
+    ).map(d => (setScale(d._1), setScale(d._2)))
 
     result should contain theSameElementsAs expected
   }

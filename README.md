@@ -1,1 +1,1 @@
-# sparkml-extensions [![Build Status](https://travis-ci.com/chitralverma/sparkml-extensions.svg?branch=master)](https://travis-ci.com/chitralverma/sparkml-extensions)
+# sparkml-extensions [![Build Status](https://travis-ci.com/chitralverma/sparkml-extensions.svg?branch=master)](https://travis-ci.com/chitralverma/sparkml-extensions) [![codecov](https://codecov.io/gh/chitralverma/sparkml-extensions/branch/master/graph/badge.svg)](https://codecov.io/gh/chitralverma/sparkml-extensions)
