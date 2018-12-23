@@ -16,7 +16,9 @@
  */
 
 package com.chitralv.sparkml.extensions.evaluation
+
 import com.chitralv.sparkml.extensions.TestBase
+import org.apache.spark.mllib.evaluation.BinaryClassificationMetrics
 
 class BinaryClassificationMetricsWithExtensionsSpec extends TestBase {
   import scala.math.BigDecimal.RoundingMode
@@ -49,7 +51,8 @@ class BinaryClassificationMetricsWithExtensionsSpec extends TestBase {
     )
 
     val rdd = sc.parallelize(scoreAndLabels)
-    val result = new BinaryClassificationMetricsWithExtensions(rdd, 10)
+    val result = new BinaryClassificationMetrics(rdd, 10)
+      .extensions()
       .calibration()
       .collect()
       .map(d => (setScale(d._1), setScale(d._2)))
