@@ -1,4 +1,4 @@
-organization := "com.mav.now"
+organization := "com.chitralv"
 
 name := "sparkml-extensions"
 
@@ -8,6 +8,7 @@ sparkComponents ++= Seq("core", "streaming", "sql", "catalyst", "mllib")
 spName := "chitralv/sparkml-extensions"
 spIncludeMaven := true
 spAppendScalaVersion := true
+
 useGpg := true
 updateOptions := updateOptions.value.withCachedResolution(true)
 
@@ -46,6 +47,14 @@ pomIncludeRepository := { x =>
   false
 }
 
+coverageHighlighting := {
+  if (sparkVersion.value >= "2.0.0") true else false
+}
+
+coverageHighlighting := {
+    if (scalaBinaryVersion.value == "2.10") false else true
+}
+
 scalastyleFailOnError in ThisBuild := true
 scalafmtConfig in ThisBuild := file(".scalafmt.conf")
 scalafmtOnCompile in Compile := true
@@ -54,8 +63,8 @@ scalafmtTestOnCompile in Compile := true
 libraryDependencies += "com.holdenkarau" %% "spark-testing-base" % "2.3.1_0.10.0" % "test"
 
 credentials ++= Seq(
-  Credentials(Path.userHome / ".ivy2" / ".sbtcredentials"),
-  Credentials(Path.userHome / ".ivy2" / ".sparkcredentials")
+  Credentials(Path.userHome / ".sbt" / ".sbtcredentials"),
+  Credentials(Path.userHome / ".sbt" / ".sparkcredentials")
 )
 
 artifactName := { (sv: ScalaVersion, module: ModuleID, artifact: Artifact) =>
