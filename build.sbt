@@ -95,3 +95,22 @@ pomExtra :=
                         <email>chitralverma@gmail.com</email>
                     </developer>
                 </developers>
+
+import sbtrelease.ReleaseStateTransformations._
+
+releasePublishArtifactsAction := PgpKeys.publishSigned.value
+releaseProcess := Seq[ReleaseStep](
+    checkSnapshotDependencies,
+    inquireVersions,
+    runClean,
+    runTest,
+    setReleaseVersion,
+    commitReleaseVersion,
+    tagRelease,
+    publishArtifacts,
+    setNextVersion,
+    commitNextVersion,
+    releaseStepCommand("sonatypeReleaseAll"),
+    pushChanges
+)
+

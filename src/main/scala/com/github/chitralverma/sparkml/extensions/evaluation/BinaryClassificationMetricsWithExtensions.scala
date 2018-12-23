@@ -25,7 +25,7 @@ import org.apache.spark.rdd.RDD
 class BinaryClassificationMetricsWithExtensions(scoreAndLabels: RDD[(Double, Double)], numBins: Int)
   extends BinaryClassificationMetrics(scoreAndLabels, numBins) {
 
-  val nbins: Int = if (numBins < 10) 10 else numBins
+  private val nbins: Int = if (numBins < 10) 10 else numBins
 
   /**
     * Compute true and predicted probabilities for a calibration curve.
