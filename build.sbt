@@ -52,7 +52,7 @@ coverageHighlighting := {
 }
 
 coverageHighlighting := {
-    if (scalaBinaryVersion.value == "2.10") false else true
+  if (scalaBinaryVersion.value == "2.10") false else true
 }
 
 scalastyleFailOnError in ThisBuild := true
@@ -63,7 +63,7 @@ scalafmtTestOnCompile in Compile := true
 libraryDependencies += "com.holdenkarau" %% "spark-testing-base" % "2.3.1_0.10.0" % "test"
 
 credentials ++= Seq(
-  Credentials(Path.userHome / ".sbt" / ".sbtcredentials"),
+  Credentials(Path.userHome / ".sbt" / ".sonatype_credential"),
   Credentials(Path.userHome / ".sbt" / ".sparkcredentials")
 )
 
@@ -81,3 +81,17 @@ publishTo := {
 
 licenses in ThisBuild += ("Apache-2.0", url("http://www.apache.org/licenses/LICENSE-2.0"))
 homepage := Some(url("https://github.com/chitralverma/sparkml-extensions"))
+
+pomExtra :=
+  <scm>
+            <url>git@github.com:chitralverma/sparkml-extensions.git</url>
+            <connection>scm:git@github.com:chitralverma/sparkml-extensions.git</connection>
+        </scm>
+                <developers>
+                    <developer>
+                        <id>chitralverma</id>
+                        <name>Chitral Verma</name>
+                        <url>https://github.com/chitralverma/</url>
+                        <email>chitralverma@gmail.com</email>
+                    </developer>
+                </developers>
