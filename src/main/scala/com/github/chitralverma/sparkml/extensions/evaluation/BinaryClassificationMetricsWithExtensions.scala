@@ -15,10 +15,10 @@
  * limitations under the License.
  */
 
-package com.chitralv.sparkml.extensions.evaluation
+package com.github.chitralverma.sparkml.extensions.evaluation
 
 import breeze.linalg
-import com.chitralv.sparkml.extensions.utils.Utils.digitize
+import com.github.chitralverma.sparkml.extensions.utils.Utils.digitize
 import org.apache.spark.mllib.evaluation.BinaryClassificationMetrics
 import org.apache.spark.rdd.RDD
 

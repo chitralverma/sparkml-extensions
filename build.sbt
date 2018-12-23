@@ -1,11 +1,11 @@
-organization := "com.chitralv"
+organization := "com.github.chitralverma"
 
 name := "sparkml-extensions"
 
 sparkVersion := "2.4.0"
 sparkComponents ++= Seq("core", "streaming", "sql", "catalyst", "mllib")
 
-spName := "chitralv/sparkml-extensions"
+spName := "chitralverma/sparkml-extensions"
 spIncludeMaven := true
 spAppendScalaVersion := true
 

@@ -15,17 +15,18 @@
  * limitations under the License.
  */
 
-package com.chitralv.sparkml.extensions
+package com.github.chitralverma.sparkml.extensions.utils
 
-import org.apache.spark.mllib.evaluation.BinaryClassificationMetrics
+import com.github.chitralverma.sparkml.extensions.TestBase
 
-package object evaluation {
+class UtilsSpec extends TestBase {
+  import Utils._
 
-  implicit class EvaluationExtensions(bcm: BinaryClassificationMetrics) {
+  "Digitize values correctly" in {
+    digitize(Array(0.2, 6.4, 3.0, 1.6), Array(0.0, 1.0, 2.5, 4.0, 10.0))
+      .shouldEqual(Array(1.0, 4.0, 3.0, 2.0))
 
-    def extensions(): BinaryClassificationMetricsWithExtensions =
-      new BinaryClassificationMetricsWithExtensions(bcm.scoreAndLabels, bcm.numBins)
-
+    digitize(Array(1.2, 10.0, 12.4, 15.5, 20.0), Array(0.0, 5.0, 10.0, 15.0, 20.0))
+      .shouldEqual(Array(1.0, 3.0, 3.0, 4.0, 4.0))
   }
-
 }

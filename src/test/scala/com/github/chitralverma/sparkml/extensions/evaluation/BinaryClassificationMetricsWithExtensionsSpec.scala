@@ -15,9 +15,8 @@
  * limitations under the License.
  */
 
-package com.chitralv.sparkml.extensions.evaluation
-
-import com.chitralv.sparkml.extensions.TestBase
+package com.github.chitralverma.sparkml.extensions.evaluation
+import com.github.chitralverma.sparkml.extensions.TestBase
 import org.apache.spark.mllib.evaluation.BinaryClassificationMetrics
 
 class BinaryClassificationMetricsWithExtensionsSpec extends TestBase {

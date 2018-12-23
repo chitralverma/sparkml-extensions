@@ -15,11 +15,17 @@
  * limitations under the License.
  */
 
-package com.chitralv.sparkml.extensions
+package com.github.chitralverma.sparkml.extensions
 
-import com.holdenkarau.spark.testing.SharedSparkContext
-import org.scalatest.{Matchers, WordSpec}
+import org.apache.spark.mllib.evaluation.BinaryClassificationMetrics
 
-trait TestBase extends WordSpec with SharedSparkContext with Matchers {
-  override implicit def reuseContextIfPossible: Boolean = true
+package object evaluation {
+
+  implicit class EvaluationExtensions(bcm: BinaryClassificationMetrics) {
+
+    def extensions(): BinaryClassificationMetricsWithExtensions =
+      new BinaryClassificationMetricsWithExtensions(bcm.scoreAndLabels, bcm.numBins)
+
+  }
+
 }
