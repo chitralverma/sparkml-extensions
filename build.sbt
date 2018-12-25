@@ -5,9 +5,13 @@ name := "sparkml-extensions"
 sparkVersion := "2.4.0"
 sparkComponents ++= Seq("core", "streaming", "sql", "catalyst", "mllib")
 
-spName := "chitralverma/sparkml-extensions"
 spIncludeMaven := true
 spAppendScalaVersion := true
+spName := "chitralverma/sparkml-extensions"
+spShortDescription := "Extensions for Spark ML/MlLib"
+spDescription := """This repository contains a distributed implementation based on Apache Spark for various functionality currently missing in Spark ML/ MlLib. These extensions may provide a useful estimator, a missing metric or simply an improved variant of existing functionality. 
+                   |
+                   |The software is open source and released under the terms of the Apache License, Version 2.0.""".stripMargin
 
 useGpg := true
 updateOptions := updateOptions.value.withCachedResolution(true)
