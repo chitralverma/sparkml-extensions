@@ -43,7 +43,7 @@ javaOptions ++= Seq("-Xms2G", "-Xmx2G", "-XX:MaxPermSize=2048M", "-XX:+CMSClassU
 scalacOptions ++= Seq("-deprecation", "-unchecked")
 
 publishMavenStyle := true
-pomIncludeRepository := { x =>
+pomIncludeRepository := { _ =>
   false
 }
 
@@ -99,18 +99,18 @@ pomExtra :=
 import sbtrelease.ReleaseStateTransformations._
 
 releasePublishArtifactsAction := PgpKeys.publishSigned.value
+releaseCrossBuild := true
 releaseProcess := Seq[ReleaseStep](
-    checkSnapshotDependencies,
-    inquireVersions,
-    runClean,
-    runTest,
-    setReleaseVersion,
-    commitReleaseVersion,
-    tagRelease,
-    publishArtifacts,
-    setNextVersion,
-    commitNextVersion,
-    releaseStepCommand("sonatypeReleaseAll"),
-    pushChanges
+  checkSnapshotDependencies,
+  inquireVersions,
+  runClean,
+  runTest,
+  setReleaseVersion,
+  commitReleaseVersion,
+  tagRelease,
+  publishArtifacts,
+  setNextVersion,
+  commitNextVersion,
+  releaseStepCommand("sonatypeReleaseAll"),
+  pushChanges
 )
-
