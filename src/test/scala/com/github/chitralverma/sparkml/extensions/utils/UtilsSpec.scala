@@ -28,5 +28,9 @@ class UtilsSpec extends TestBase {
 
     digitize(Array(1.2, 10.0, 12.4, 15.5, 20.0), Array(0.0, 5.0, 10.0, 15.0, 20.0))
       .shouldEqual(Array(1.0, 3.0, 3.0, 4.0, 4.0))
+
+    digitize(Array(-3, 0.5, 1, 1.5, 4), Array(0.0, 1.0, 2.0))
+      .shouldEqual(Array(0.0, 1.0, 2.0, 2.0, 2.0))
+
   }
 }

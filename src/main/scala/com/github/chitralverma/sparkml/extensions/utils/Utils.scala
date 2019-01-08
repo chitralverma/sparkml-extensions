@@ -34,14 +34,19 @@ object Utils {
     import scala.annotation.tailrec
 
     @tailrec
-    def go(i: Int, res: Double): Double =
-      if (i < bins.length)
-        go(i + 1, {
-          if (x < bins(i)) res else if ((i + 1) >= bins.length) bins.length - 1 else i + 1
-        })
-      else res
+    def go(start: Int, end: Int): Int = {
+      val pos = ((end - start) / 2) + start
+      val curr = bins(pos)
 
-    go(0, 0.0)
+      if ((end - start) <= 1)
+        if (x < bins(end - 1)) pos
+        else if (pos + 1 >= bins.length) bins.length - 1
+        else pos + 1
+      else if (x >= curr) go(pos, end)
+      else go(start, pos)
+    }
+
+    go(0, bins.length)
   }
 
 }
